@@ -12,7 +12,7 @@ from config import file_oNH2D_thin, file_oNH2D_thick, \
 
 from astropy.io import fits
 
-do_NH3 = False
+do_NH3 = True
 do_oNH2D = True
 do_pNH2D = True
 
@@ -110,19 +110,26 @@ if do_oNH2D:
     oNH2D_edv = fit_oNH2D[7, :, :]
     #
     hd_oNH2D_2d['BUNIT'] = 'K'
+    op_thin = (oNH2D_tau == 0.1) | (oNH2D_etau == 0.0) | (oNH2D_Tex == 0.0)
+    oNH2D_Tex[op_thin] = np.nan
+    oNH2D_eTex[op_thin] = np.nan
     fits.writeto(file_oNH2D_Tex, oNH2D_Tex, hd_oNH2D_2d, overwrite=True)
     fits.writeto(file_oNH2D_eTex, oNH2D_eTex, hd_oNH2D_2d, overwrite=True)
     hd_oNH2D_2d['BUNIT'] = ''
+    oNH2D_tau[op_thin] = np.nan
+    oNH2D_etau[op_thin] = np.nan
     fits.writeto(file_oNH2D_tau, oNH2D_tau, hd_oNH2D_2d, overwrite=True)
     fits.writeto(file_oNH2D_etau, oNH2D_etau, hd_oNH2D_2d, overwrite=True)
     hd_oNH2D_2d['BUNIT'] = 'km/s'
-    oNH2D_Vlsr[oNH2D_Vlsr == 0.0] = np.nan
-    oNH2D_eVlsr[oNH2D_eVlsr == 0.0] = np.nan
+    bad_v = (oNH2D_Vlsr == 0.0) | (oNH2D_eVlsr == 0.0)
+    oNH2D_Vlsr[bad_v] = np.nan
+    oNH2D_eVlsr[bad_v] = np.nan
     fits.writeto(file_oNH2D_Vlsr, oNH2D_Vlsr, hd_oNH2D_2d, overwrite=True)
     fits.writeto(file_oNH2D_eVlsr, oNH2D_eVlsr, hd_oNH2D_2d, overwrite=True)
     hd_oNH2D_2d['BUNIT'] = 'km/s'
-    oNH2D_dv[oNH2D_dv == 0.0] = np.nan
-    oNH2D_edv[oNH2D_edv == 0.0] = np.nan
+    bad_dv = (oNH2D_edv == 0.0) | (oNH2D_edv == 0.0)
+    oNH2D_dv[bad_dv] = np.nan
+    oNH2D_edv[bad_dv] = np.nan
     fits.writeto(file_oNH2D_dv, oNH2D_dv, hd_oNH2D_2d, overwrite=True)
     fits.writeto(file_oNH2D_edv, oNH2D_edv, hd_oNH2D_2d, overwrite=True)
 
@@ -155,19 +162,26 @@ if do_pNH2D:
     pNH2D_dv = fit_pNH2D[3, :, :]
     pNH2D_edv = fit_pNH2D[7, :, :]
     #
+    op_thin = (pNH2D_tau == 0.1) | (pNH2D_etau == 0.0) | (pNH2D_Tex == 0.0)
+    pNH2D_Tex[op_thin] = np.nan
+    pNH2D_eTex[op_thin] = np.nan
     hd_pNH2D_2d['BUNIT'] = 'K'
     fits.writeto(file_pNH2D_Tex, pNH2D_Tex, hd_pNH2D_2d, overwrite=True)
     fits.writeto(file_pNH2D_eTex, pNH2D_eTex, hd_pNH2D_2d, overwrite=True)
     hd_pNH2D_2d['BUNIT'] = ''
+    pNH2D_tau[op_thin] = np.nan
+    pNH2D_etau[op_thin] = np.nan
     fits.writeto(file_pNH2D_tau, pNH2D_tau, hd_pNH2D_2d, overwrite=True)
     fits.writeto(file_pNH2D_etau, pNH2D_etau, hd_pNH2D_2d, overwrite=True)
     hd_pNH2D_2d['BUNIT'] = 'km/s'
-    pNH2D_Vlsr[pNH2D_Vlsr == 0.0] = np.nan
-    pNH2D_eVlsr[pNH2D_eVlsr == 0.0] = np.nan
+    bad_v = (pNH2D_Vlsr == 0.0) | (pNH2D_eVlsr == 0.0)
+    pNH2D_Vlsr[bad_v] = np.nan
+    pNH2D_eVlsr[bad_v] = np.nan
     fits.writeto(file_pNH2D_Vlsr, pNH2D_Vlsr, hd_pNH2D_2d, overwrite=True)
     fits.writeto(file_pNH2D_eVlsr, pNH2D_eVlsr, hd_pNH2D_2d, overwrite=True)
     hd_pNH2D_2d['BUNIT'] = 'km/s'
-    pNH2D_dv[pNH2D_dv == 0.0] = np.nan
-    pNH2D_edv[pNH2D_edv == 0.0] = np.nan
+    bad_dv = (pNH2D_edv == 0.0) | (pNH2D_edv == 0.0)
+    pNH2D_dv[bad_dv] = np.nan
+    pNH2D_edv[bad_dv] = np.nan
     fits.writeto(file_pNH2D_dv, pNH2D_dv, hd_pNH2D_2d, overwrite=True)
     fits.writeto(file_pNH2D_edv, pNH2D_edv, hd_pNH2D_2d, overwrite=True)
