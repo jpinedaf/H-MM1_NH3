@@ -1,9 +1,9 @@
 file_NH3_thick = 'fits/H-MM1_NH3_fit_thick_par_snr5.fits'
 file_NH3_thin = 'fits/H-MM1_NH3_fit_thin_par_snr5.fits'
-file_oNH2D_thin = 'fits/H-MM1_oNH2D_fit_thin_par_new_snr5.fits'
-file_oNH2D_thick = 'fits/H-MM1_oNH2D_fit_thick_par_new_snr5.fits'
-file_pNH2D_thin = 'fits/H-MM1_pNH2D_fit_thin_par_new_snr5.fits'
-file_pNH2D_thick = 'fits/H-MM1_pNH2D_fit_thick_par_new_snr5.fits'
+file_oNH2D_thin = 'fits/H-MM1_oNH2D_fit_thin_par_snr5.fits'
+file_oNH2D_thick = 'fits/H-MM1_oNH2D_fit_thick_par_snr5.fits'
+file_pNH2D_thin = 'fits/H-MM1_pNH2D_fit_thin_par_snr5.fits'
+file_pNH2D_thick = 'fits/H-MM1_pNH2D_fit_thick_par_snr5.fits'
 
 file_oNH2D_Tex = 'fits/H-MM1_oNH2D_Tex_new_snr5.fits'
 file_oNH2D_eTex = 'fits/H-MM1_oNH2D_eTex_new_snr5.fits'
